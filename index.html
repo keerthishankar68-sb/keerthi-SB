@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume Maker — Antigravity</title>
+  <meta name="description" content="Build stunning, ATS-optimised resumes with AI. Clean, weightless interface powered by the Antigravity design system." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════  LOGIN PAGE  ═══════════════════ -->
+  <section id="page-login" class="page page--active">
+    <div class="login-wrapper">
+      <div class="floating-card login-card">
+        <div class="login-brand">
+          <svg class="brand-icon" viewBox="0 0 48 48" width="48" height="48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 28 Q24 10 32 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="18" r="3" fill="currentColor" opacity=".5"/></svg>
+          <h1 class="brand-name">Antigravity</h1>
+          <p class="brand-tagline">AI Resume Maker</p>
+        </div>
+
+        <div id="login-form-container">
+          <div class="input-group">
+            <label for="login-email">Email</label>
+            <input id="login-email" type="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="input-group">
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <div class="input-group" id="login-name-group" style="display:none;">
+            <label for="login-name">Full Name</label>
+            <input id="login-name" type="text" placeholder="Jane Doe" autocomplete="name" />
+          </div>
+          <button id="btn-auth" class="btn btn-primary btn-block">Sign In</button>
+          <p class="toggle-auth-text">
+            <span id="toggle-auth-label">Don't have an account?</span>
+            <button id="btn-toggle-auth" class="btn-link">Sign Up</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  APP SHELL  ═══════════════════ -->
+  <header id="app-header" class="app-header hidden">
+    <div class="header-inner">
+      <div class="header-brand">
+        <svg class="brand-icon-sm" viewBox="0 0 48 48" width="28" height="28"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M16 28 Q24 10 32 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="18" r="3" fill="currentColor" opacity=".5"/></svg>
+        <span class="header-title">Antigravity</span>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-link" data-page="templates">Templates</button>
+        <button class="nav-link" data-page="builder">Builder</button>
+        <button class="nav-link" data-page="ats">ATS Score</button>
+      </nav>
+      <div class="header-right">
+        <span id="user-display" class="user-display"></span>
+        <button id="btn-logout" class="btn btn-ghost">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════  TEMPLATE SELECTION  ═══════════════════ -->
+  <section id="page-templates" class="page app-page">
+    <div class="container">
+      <div class="page-heading">
+        <h2>Choose Your Template</h2>
+        <p class="page-subtitle">Pick a floating canvas for your story.</p>
+      </div>
+      <div class="template-grid" id="template-grid">
+        <!-- Template cards injected by JS -->
+      </div>
+      <div class="template-actions">
+        <p class="template-hint" id="template-hint">👆 Tap a template above to select it</p>
+        <button class="btn btn-primary btn-lg" id="btn-continue-builder" disabled>Continue to Builder →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  RESUME BUILDER  ═══════════════════ -->
+  <section id="page-builder" class="page app-page">
+    <div class="container">
+      <div class="page-heading">
+        <h2>Build Your Resume</h2>
+        <p class="page-subtitle">Fill in the details — one step at a time.</p>
+      </div>
+
+      <!-- Step indicator -->
+      <div class="steps-bar">
+        <div class="step-indicator active" data-step="0"><span class="step-num">1</span><span class="step-label">Personal</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-step="1"><span class="step-num">2</span><span class="step-label">Education</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-step="2"><span class="step-num">3</span><span class="step-label">Projects</span></div>
+        <div class="step-connector"></div>
+        <div class="step-indicator" data-step="3"><span class="step-num">4</span><span class="step-label">Experience</span></div>
+      </div>
+
+      <div class="builder-body">
+        <!-- Step 0 — Personal -->
+        <div class="builder-step floating-card active" data-step="0">
+          <h3>Personal Information</h3>
+          <div class="form-row">
+            <div class="input-group"><label for="b-fullname">Full Name</label><input id="b-fullname" type="text" placeholder="Jane Doe" /></div>
+            <div class="input-group"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="you@example.com" /></div>
+          </div>
+          <div class="form-row">
+            <div class="input-group"><label for="b-phone">Phone</label><input id="b-phone" type="tel" placeholder="+1 234 567 890" /></div>
+            <div class="input-group"><label for="b-location">Location</label><input id="b-location" type="text" placeholder="New York, NY" /></div>
+          </div>
+          <div class="input-group"><label for="b-summary">Professional Summary</label><textarea id="b-summary" rows="3" placeholder="A brief summary of your career…"></textarea></div>
+          <div class="form-row">
+            <div class="input-group"><label for="b-linkedin">LinkedIn URL</label><input id="b-linkedin" type="url" placeholder="https://linkedin.com/in/…" /></div>
+            <div class="input-group"><label for="b-portfolio">Portfolio / Website</label><input id="b-portfolio" type="url" placeholder="https://…" /></div>
+          </div>
+        </div>
+
+        <!-- Step 1 — Education -->
+        <div class="builder-step floating-card" data-step="1">
+          <h3>Education</h3>
+          <div id="edu-entries">
+            <div class="entry-block" data-index="0">
+              <div class="form-row">
+                <div class="input-group"><label>Degree</label><input type="text" class="edu-degree" placeholder="B.Sc. Computer Science" /></div>
+                <div class="input-group"><label>Institution</label><input type="text" class="edu-institution" placeholder="MIT" /></div>
+              </div>
+              <div class="form-row">
+                <div class="input-group"><label>Start Year</label><input type="text" class="edu-start" placeholder="2018" /></div>
+                <div class="input-group"><label>End Year</label><input type="text" class="edu-end" placeholder="2022" /></div>
+              </div>
+              <div class="input-group"><label>Description / GPA</label><textarea class="edu-desc" rows="2" placeholder="GPA 3.9 / 4.0, Dean's list…"></textarea></div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btn-add-edu">+ Add Education</button>
+        </div>
+
+        <!-- Step 2 — Projects -->
+        <div class="builder-step floating-card" data-step="2">
+          <h3>Projects</h3>
+          <div id="proj-entries">
+            <div class="entry-block" data-index="0">
+              <div class="form-row">
+                <div class="input-group"><label>Project Name</label><input type="text" class="proj-name" placeholder="AI Chatbot" /></div>
+                <div class="input-group"><label>Tech Stack</label><input type="text" class="proj-tech" placeholder="Python, TensorFlow" /></div>
+              </div>
+              <div class="input-group"><label>Description</label><textarea class="proj-desc" rows="2" placeholder="What did you build and why?"></textarea></div>
+              <div class="input-group"><label>Link</label><input type="url" class="proj-link" placeholder="https://github.com/…" /></div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btn-add-proj">+ Add Project</button>
+        </div>
+
+        <!-- Step 3 — Experience -->
+        <div class="builder-step floating-card" data-step="3">
+          <h3>Work Experience</h3>
+          <div id="exp-entries">
+            <div class="entry-block" data-index="0">
+              <div class="form-row">
+                <div class="input-group"><label>Job Title</label><input type="text" class="exp-title" placeholder="Software Engineer" /></div>
+                <div class="input-group"><label>Company</label><input type="text" class="exp-company" placeholder="Google" /></div>
+              </div>
+              <div class="form-row">
+                <div class="input-group"><label>Start Date</label><input type="text" class="exp-start" placeholder="Jan 2022" /></div>
+                <div class="input-group"><label>End Date</label><input type="text" class="exp-end" placeholder="Present" /></div>
+              </div>
+              <div class="input-group"><label>Responsibilities</label><textarea class="exp-desc" rows="3" placeholder="Describe your key responsibilities and achievements…"></textarea></div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btn-add-exp">+ Add Experience</button>
+        </div>
+      </div>
+
+      <!-- Builder navigation -->
+      <div class="builder-nav">
+        <button class="btn btn-ghost" id="btn-prev-step" disabled>← Back</button>
+        <button class="btn btn-primary" id="btn-next-step">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  ATS SCORE CHECKER  ═══════════════════ -->
+  <section id="page-ats" class="page app-page">
+    <div class="container">
+      <div class="page-heading">
+        <h2>ATS Score Checker</h2>
+        <p class="page-subtitle">Paste a job description to see how well your resume matches.</p>
+      </div>
+
+      <div class="ats-layout">
+        <div class="floating-card ats-input-card">
+          <h3>Job Description</h3>
+          <textarea id="ats-jd" rows="10" placeholder="Paste the full job description here…"></textarea>
+          <button class="btn btn-primary btn-block" id="btn-check-ats">Analyze Match</button>
+        </div>
+
+        <div class="ats-results" id="ats-results" style="display:none;">
+          <div class="floating-card ats-score-card">
+            <h3>Your ATS Score</h3>
+            <div class="score-dial">
+              <svg class="score-ring" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="52" />
+                <circle class="ring-fg" cx="60" cy="60" r="52" id="score-ring-fg" />
+              </svg>
+              <span class="score-value" id="score-value">0</span>
+            </div>
+          </div>
+
+          <div class="floating-card ats-suggestions-card">
+            <h3>AI Suggestions</h3>
+            <ul id="ats-suggestions" class="suggestion-list"></ul>
+          </div>
+
+          <div class="floating-card ats-keywords-card">
+            <h3>Missing Keywords</h3>
+            <div id="ats-missing-keywords" class="keyword-chips"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════  RESUME PREVIEW MODAL  ═══════════════════ -->
+  <div id="preview-overlay" class="preview-overlay hidden">
+    <div class="preview-container floating-card">
+      <div class="preview-header">
+        <h3>Resume Preview</h3>
+        <button class="btn btn-ghost" id="btn-close-preview">✕ Close</button>
+      </div>
+      <div id="preview-content" class="preview-content"></div>
+      <button class="btn btn-primary" id="btn-download-pdf">Download as PDF</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
