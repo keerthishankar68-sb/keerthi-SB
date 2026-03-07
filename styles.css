@@ -151,8 +151,47 @@ a { text-decoration: none; color: inherit; }
     radial-gradient(ellipse at 70% 80%, rgba(184,169,212,.1) 0%, transparent 60%),
     var(--bg);
 }
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .login-container {
+    flex-direction: column;
+    gap: 40px;
+    max-width: 420px;
+  }
+}
+.login-side { flex: 1; width: 100%; }
+.login-side--motivation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.motivation-item {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-subtle);
+  animation: floatUp .8s ease both;
+  animation-delay: var(--delay);
+}
+.motivation-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-float);
+}
+.motivation-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+.motivation-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.motivation-item p { font-size: .9rem; color: var(--text-muted); line-height: 1.5; }
+
 .login-card {
-  width: 100%; max-width: 420px;
+  width: 100%;
   animation: floatUp .8s ease both;
 }
 @keyframes floatUp {
