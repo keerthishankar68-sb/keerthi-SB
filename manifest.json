@@ -1,0 +1,21 @@
+{
+  "name": "AI Resume Maker",
+  "short_name": "ResumeMaker",
+  "description": "Build stunning, ATS-optimized resumes with AI.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#F5F6FA",
+  "theme_color": "#8BA4D4",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
