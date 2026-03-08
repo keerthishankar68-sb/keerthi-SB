@@ -336,6 +336,10 @@ a { text-decoration: none; color: inherit; }
 .template-card[data-tpl="classic"]  .tpl-line.title { background: var(--text); opacity:.2; }
 .template-card[data-tpl="creative"] .tpl-line.title { background: var(--tertiary); opacity:.5; }
 .template-card[data-tpl="minimal"]  .tpl-line.title { background: var(--secondary); opacity:.5; }
+.template-card[data-tpl="professional"] .tpl-line.title { background: #2D3748; opacity:.8; }
+.template-card[data-tpl="vibrant"]      .tpl-line.title { background: linear-gradient(90deg, #B8A9D4, #E8C5B0); opacity:.8; }
+.template-card[data-tpl="elegant"]      .tpl-line.title { background: #8B735B; opacity:.5; }
+.template-card[data-tpl="compact"]      .tpl-line.title { background: #718096; opacity:.4; }
 
 /* ─────────────────────────────────────────────────────
    RESUME BUILDER — Steps
@@ -524,6 +528,21 @@ a { text-decoration: none; color: inherit; }
 .preview-content.tpl-classic  .preview-section h4 { color: var(--text); border-color: var(--text); text-transform: none; }
 .preview-content.tpl-creative .preview-section h4 { color: var(--tertiary); border-color: var(--tertiary); }
 .preview-content.tpl-minimal  .preview-section h4 { color: var(--secondary); border-color: var(--secondary); font-weight: 400; }
+
+.preview-content.tpl-professional h2 { color: #1A365D; border-left: 5px solid #1A365D; padding-left: 15px; }
+.preview-content.tpl-professional .preview-section h4 { color: #2C5282; border-bottom: 2px solid #2C5282; }
+
+.preview-content.tpl-vibrant h2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.preview-content.tpl-vibrant .preview-section h4 { color: #764ba2; border-image: linear-gradient(to right, #667eea, #764ba2) 1; border-bottom: 2px solid; }
+
+.preview-content.tpl-elegant { font-family: 'Georgia', serif; background: #fffcf9; }
+.preview-content.tpl-elegant h2 { text-align: center; color: #5D4037; font-style: italic; }
+.preview-content.tpl-elegant .preview-contact { text-align: center; }
+.preview-content.tpl-elegant .preview-section h4 { color: #8B735B; border-color: #D2B48C; text-align: center; font-style: normal; }
+
+.preview-content.tpl-compact { font-size: 0.8rem; line-height: 1.4; padding: 20px; }
+.preview-content.tpl-compact .preview-section { margin-bottom: 12px; }
+.preview-content.tpl-compact .preview-section h4 { font-size: 0.75rem; color: #4A5568; background: #EDF2F7; border-bottom: none; padding: 2px 8px; border-radius: 4px; }
 
 /* ── Responsive polish ──────────────────────────────── */
 @media (max-width: 640px) {

@@ -115,6 +115,10 @@
     { id: 'classic',  name: 'Classic',  desc: 'Traditional & timeless' },
     { id: 'creative', name: 'Creative', desc: 'Colorful & expressive' },
     { id: 'minimal',  name: 'Minimal',  desc: 'Less is more' },
+    { id: 'professional', name: 'Professional', desc: 'Sleek & corporate' },
+    { id: 'vibrant',      name: 'Vibrant',      desc: 'Energetic gradients' },
+    { id: 'elegant',      name: 'Elegant',      desc: 'Sophisticated & refined' },
+    { id: 'compact',      name: 'Compact',      desc: 'Dense & info-rich' },
   ];
 
   function renderTemplates() {
