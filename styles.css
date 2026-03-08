@@ -196,8 +196,8 @@ a { text-decoration: none; color: inherit; }
   box-shadow: var(--shadow-float);
 }
 .motivation-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
-.motivation-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
-.motivation-item p { font-size: .9rem; color: var(--text-muted); line-height: 1.5; }
+.motivation-item h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+.motivation-item p { font-size: .95rem; color: var(--text); line-height: 1.5; font-weight: 700; }
 
 .login-card {
   width: 100%;
