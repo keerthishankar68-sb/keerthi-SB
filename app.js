@@ -1,8 +1,22 @@
 /* ═══════════════════════════════════════════════════════
    AI Resume Maker — Application Logic
    ═══════════════════════════════════════════════════════ */
-;(function () {
-  'use strict';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJKhScxs_hhocaF10tUCW7aWNj8Nkul4o",
+  authDomain: "ai-resume-maker-4734f.firebaseapp.com",
+  projectId: "ai-resume-maker-4734f",
+  storageBucket: "ai-resume-maker-4734f.firebasestorage.app",
+  messagingSenderId: "1058931993116",
+  appId: "1:1058931993116:web:73096c76c44c0994954dd9"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+'use strict';
 
   /* ── DOM cache ────────────────────────────────────── */
   const $ = (s, p = document) => p.querySelector(s);
@@ -76,22 +90,53 @@
     $('#btn-toggle-auth').textContent = isSignUp ? 'Sign In' : 'Sign Up';
   });
 
-  $('#btn-auth').addEventListener('click', () => {
+  $('#btn-auth').addEventListener('click', async () => {
     const email = $('#login-email').value.trim();
     const pw    = $('#login-password').value.trim();
     if (!email || !pw) return shakeInput();
-    const name = isSignUp ? ($('#login-name').value.trim() || email.split('@')[0]) : (email.split('@')[0]);
 
-    state.user = { email, name };
-    saveState();
-    userDisplay.textContent = name;
-    navigate('templates');
+    try {
+      if (isSignUp) {
+        const name = $('#login-name').value.trim() || email.split('@')[0];
+        const userCred = await createUserWithEmailAndPassword(auth, email, pw);
+        await updateProfile(userCred.user, { displayName: name });
+        // onAuthStateChanged will handle the navigation automatically
+      } else {
+        await signInWithEmailAndPassword(auth, email, pw);
+      }
+    } catch (error) {
+      console.error("Auth Error:", error);
+      alert(error.message);
+      shakeInput();
+    }
+  });
+
+  $('#btn-google-auth').addEventListener('click', async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Google Auth Error:", error);
+      alert(error.message);
+    }
   });
 
   $('#btn-logout').addEventListener('click', () => {
-    state.user = null;
-    saveState();
-    navigate('login');
+    signOut(auth);
+  });
+
+  // Listen to Auth State
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      state.user = { email: user.email, name: user.displayName || user.email.split('@')[0] };
+      saveState();
+      userDisplay.textContent = state.user.name;
+      navigate('templates');
+    } else {
+      state.user = null;
+      saveState();
+      navigate('login');
+    }
   });
 
   function shakeInput() {
@@ -648,4 +693,3 @@
   }
 
   init();
-})();
