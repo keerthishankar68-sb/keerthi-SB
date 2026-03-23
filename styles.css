@@ -149,6 +149,230 @@ a { text-decoration: none; color: inherit; }
 .app-page { padding-top: 100px; padding-bottom: 60px; }
 
 /* ─────────────────────────────────────────────────────
+   LANDING PAGE (PRE-LOGIN) — ELITE REFINEMENT
+   ───────────────────────────────────────────────────── */
+#page-landing {
+  position: relative;
+  overflow: hidden;
+  background: #0a0d14; /* Deep elite dark background */
+}
+
+#cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(139,164,212,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
+  filter: blur(40px);
+}
+
+.bg-blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  animation: blobFloat 20s infinite alternate ease-in-out;
+}
+
+.bg-blob--1 {
+  width: 600px; height: 600px;
+  background: var(--primary);
+  top: -100px; left: -100px;
+  animation-delay: 0s;
+}
+
+.bg-blob--2 {
+  width: 500px; height: 500px;
+  background: var(--tertiary);
+  bottom: -100px; right: -100px;
+  animation-delay: -5s;
+}
+
+.bg-blob--3 {
+  width: 400px; height: 400px;
+  background: var(--accent-peach);
+  top: 40%; left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(100px, 50px) scale(1.1); }
+  66% { transform: translate(-50px, 150px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.floating-elements {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.floating-item {
+  position: absolute;
+  font-size: 2.25rem;
+  opacity: 0.6;
+  animation: floatingIcon 12s infinite ease-in-out;
+  color: #fff;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+}
+
+@keyframes floatingIcon {
+  0% { transform: translateY(0) rotate(0deg) scale(1); }
+  33% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+  66% { transform: translateY(10px) rotate(-15deg) scale(0.9); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+.landing-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section {
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 80px;
+  animation: eliteFadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 32px;
+  letter-spacing: -3px;
+  color: #fff;
+  background: linear-gradient(135deg, #fff 40%, rgba(255,255,255,0.4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 1) !important;
+  margin-bottom: 48px;
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.5;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.btn-premium {
+  padding: 20px 56px;
+  font-size: 1.2rem;
+  border-radius: 100px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 10px 40px rgba(255,255,255,0.2);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-premium:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(255,255,255,0.4);
+  background: var(--primary);
+  color: #fff;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  animation: eliteFadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 48px;
+  text-align: left;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* Kept original shadow for consistency with new dark theme */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-15px) rotateX(5deg) rotateY(2deg);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.glass-card .icon-box {
+  font-size: 2.5rem;
+  width: 70px; height: 70px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+
+.glass-card:hover .icon-box {
+  transform: scale(1.1) rotate(10deg);
+  background: var(--primary);
+  color: #fff;
+}
+
+.glass-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.glass-card p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 1) !important;
+  line-height: 1.6;
+}
+
+@keyframes eliteFadeIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─────────────────────────────────────────────────────
    LOGIN
    ───────────────────────────────────────────────────── */
 .login-wrapper {

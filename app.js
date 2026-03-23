@@ -23,6 +23,7 @@ const auth = getAuth(app);
   const $$ = (s, p = document) => [...p.querySelectorAll(s)];
 
   const pages = {
+    landing:   $('#page-landing'),
     login:     $('#page-login'),
     templates: $('#page-templates'),
     builder:   $('#page-builder'),
@@ -68,7 +69,7 @@ const auth = getAuth(app);
 
     $$('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.page === page));
 
-    if (page === 'login') {
+    if (page === 'login' || page === 'landing') {
       header.classList.add('hidden');
     } else {
       header.classList.remove('hidden');
@@ -135,7 +136,7 @@ const auth = getAuth(app);
     } else {
       state.user = null;
       saveState();
-      navigate('login');
+      navigate('landing');
     }
   });
 
@@ -151,6 +152,21 @@ const auth = getAuth(app);
   const shakeStyle = document.createElement('style');
   shakeStyle.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}`;
   document.head.appendChild(shakeStyle);
+
+  /* ═══════════════════════════════════════════════════
+     LANDING PAGE
+     ═══════════════════════════════════════════════════ */
+  const cursorGlow = $('#cursor-glow');
+  window.addEventListener('mousemove', (e) => {
+    if (state.user) return; // Only show on landing
+    if (cursorGlow) {
+      cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    }
+  });
+
+  $('#btn-get-started').addEventListener('click', () => {
+    navigate('login');
+  });
 
   /* ═══════════════════════════════════════════════════
      TEMPLATE SELECTION
@@ -620,7 +636,7 @@ const auth = getAuth(app);
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139, 164, 212, ${this.alpha})`; // primary color
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha * 0.5})`; // White dots for dark theme
         ctx.fill();
       }
     }
@@ -628,7 +644,8 @@ const auth = getAuth(app);
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      particles = Array.from({ length: Math.floor(canvas.width / 15) }, () => new Particle());
+      // More dots for a denser neural feel
+      particles = Array.from({ length: Math.floor(canvas.width / 10) }, () => new Particle());
     }
 
     window.addEventListener('resize', resize);
@@ -651,7 +668,7 @@ const auth = getAuth(app);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(139, 164, 212, ${0.1 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 * (1 - dist / 120)})`;
             ctx.stroke();
           }
         }
@@ -681,7 +698,7 @@ const auth = getAuth(app);
       userDisplay.textContent = state.user.name;
       navigate('templates');
     } else {
-      navigate('login');
+      navigate('landing');
     }
 
     // Register PWA Service Worker

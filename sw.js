@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ai-resume-maker-v2';
+const CACHE_NAME = 'ai-resume-maker-v8';
 const ASSETS = [
   '/',
   '/index.html',

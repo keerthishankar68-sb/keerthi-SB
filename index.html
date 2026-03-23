@@ -7,7 +7,7 @@
   <meta name="description" content="Build stunning, ATS-optimised resumes with AI. Clean, weightless interface." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#8BA4D4" />
@@ -18,8 +18,56 @@
 <body>
   <canvas id="particle-canvas"></canvas>
 
+  <!-- ═══════════════════  LANDING PAGE  ═══════════════════ -->
+  <section id="page-landing" class="page page--active">
+    <div id="cursor-glow"></div>
+    <div class="bg-blobs">
+      <div class="bg-blob bg-blob--1"></div>
+      <div class="bg-blob bg-blob--2"></div>
+      <div class="bg-blob bg-blob--3"></div>
+    </div>
+    
+    <!-- Floating Tech Elements -->
+    <div class="floating-elements">
+      <div class="floating-item" style="top: 15%; left: 10%; animation-delay: 0s;">✨</div>
+      <div class="floating-item" style="top: 25%; left: 80%; animation-delay: -2s;">🤖</div>
+      <div class="floating-item" style="top: 60%; left: 15%; animation-delay: -5s;">📄</div>
+      <div class="floating-item" style="top: 80%; left: 70%; animation-delay: -3s;">⚡</div>
+      <div class="floating-item" style="top: 40%; left: 85%; animation-delay: -7s;">🧠</div>
+      <div class="floating-item" style="top: 10%; left: 50%; animation-delay: -4s;">💼</div>
+    </div>
+
+    <div class="landing-wrapper">
+      <div class="hero-section">
+        <h1 class="hero-title">Build Your Future <br> with AI Precision</h1>
+        <p class="hero-subtitle">Create a professional, ATS-optimized resume in minutes. Intelligent suggestions, modern templates, and instant results.</p>
+        <div class="hero-cta">
+          <button id="btn-get-started" class="btn-premium">Get Started for Free — It's Fast! 🚀</button>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card">
+          <div class="icon-box">🤖</div>
+          <h3>AI-Powered</h3>
+          <p>Smart content suggestions tailored to your industry and experience level.</p>
+        </div>
+        <div class="glass-card">
+          <div class="icon-box">📊</div>
+          <h3>ATS-Optimized</h3>
+          <p>Templates designed specifically to pass Applicant Tracking Systems with ease.</p>
+        </div>
+        <div class="glass-card">
+          <div class="icon-box">⚡</div>
+          <h3>Instant Edit</h3>
+          <p>Real-time preview and intuitive multi-step builder for a seamless experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════  LOGIN PAGE  ═══════════════════ -->
-  <section id="page-login" class="page page--active">
+  <section id="page-login" class="page">
     <div class="login-wrapper">
       <div class="login-container">
         <!-- Motivation Side -->
