@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Ollastack</title>
+  <meta name="description" content="Notes from building a form backend in 2026. Practical, honest, dev-first.">
+  <link rel="canonical" href="https://ollastack.com/blog/">
+  
+  <meta property="og:title" content="Blog — Ollastack">
+  <meta property="og:description" content="Notes from building a form backend in 2026. Practical, honest, dev-first.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ollastack.com/blog/">
+  <meta property="og:image" content="https://ollastack.com/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT BAR ============ -->
+  <div class="announce">
+    <div class="container-wide announce-inner">
+      <span class="announce-chip mono">NEW</span>
+      <span class="announce-text">
+        AI agents now first-class:
+        <span class="mono announce-highlight">authorize · audit · revoke in one click</span>
+        — your agents submit cleanly, bots stay blocked.
+      </span>
+      <a href="/docs/agents" class="announce-cta">Read agent docs →</a>
+    </div>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav">
+    <div class="container-wide nav-inner">
+      <div class="nav-left">
+        <a href="/" aria-label="ollastack" class="logo-lockup">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-mark">
+            <rect x="2" y="2" width="20" height="20" rx="4" fill="#DA291C"></rect>
+            <rect x="6" y="7" width="12" height="2" rx="1" fill="#ffffff"></rect>
+            <rect x="6" y="11" width="12" height="2" rx="1" fill="#ffffff"></rect>
+            <rect x="6" y="15" width="12" height="2" rx="1" fill="#ffffff"></rect>
+          </svg>
+          <span class="wordmark">ollastack</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/" class="nav-link">Product</a>
+          <a href="/use-cases" class="nav-link">Use cases</a>
+          <a href="/email-api" class="nav-link">Email API</a>
+          <a href="/docs" class="nav-link">Docs</a>
+          <a href="/docs/api" class="nav-link">API</a>
+          <a href="/resources" class="nav-link">Resources</a>
+          <a href="/blog" class="nav-link active">Blog</a>
+          <a href="/pricing" class="nav-link">Pricing</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <a class="btn btn-ghost btn-sm nav-signin" href="https://login.ollastack.com/login">Sign in</a>
+        <a class="btn btn-primary btn-sm" href="https://login.ollastack.com/register">
+          Start free
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <button type="button" class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <nav class="nav-mobile" id="nav-mobile" aria-label="Mobile">
+      <a href="/" class="nav-mobile-link">Product</a>
+      <a href="/use-cases" class="nav-mobile-link">Use cases</a>
+      <a href="/email-api" class="nav-mobile-link">Email API</a>
+      <a href="/docs" class="nav-mobile-link">Docs</a>
+      <a href="/docs/api" class="nav-mobile-link">API</a>
+      <a href="/resources" class="nav-mobile-link">Resources</a>
+      <a href="/blog" class="nav-mobile-link active">Blog</a>
+      <a href="/pricing" class="nav-mobile-link">Pricing</a>
+      <a class="nav-mobile-link" href="https://login.ollastack.com/login">Sign in</a>
+      <a class="nav-mobile-cta btn btn-primary" href="https://login.ollastack.com/register">Start free</a>
+    </nav>
+  </header>
+
+  <!-- ============ BLOG LISTING MAIN ============ -->
+  <main class="container-wide blog-shell">
+    <header class="blog-head">
+      <div class="blog-eyebrow mono">/ blog</div>
+      <h1 class="blog-title">Notes from building a form backend.</h1>
+      <p class="blog-lede">
+        Practical pieces on shipping forms, handling submissions, and the
+        details behind a "simple" endpoint that an AI agent actually wants
+        to talk to.
+      </p>
+    </header>
+
+    <ul class="post-list">
+      
+      <!-- NEW POST (Aug 21, 2026) -->
+      <li>
+        <a href="/blog/can-ai-agents-submit-forms-safely" class="post-card featured">
+          <div class="post-meta mono">
+            <span class="badge-new">NEW</span>
+            <time datetime="2026-08-21">Aug 21, 2026</time>
+            <span>·</span>
+            <span>21 min read</span>
+          </div>
+          <h2>Can AI Agents Submit Forms Safely? Here's What Developers Need to Know</h2>
+          <p>AI agents are filling out and submitting forms on behalf of humans at scale. Here's what "safe" actually means for that traffic, where it breaks, and how to build (or choose) a form backend that handles it properly.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <!-- Existing Posts -->
+      <li>
+        <a href="/blog/form-design-conversion" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-24">Aug 24, 2026</time>
+            <span>·</span>
+            <span>7 min read</span>
+          </div>
+          <h2>Form design for higher conversions (and less spam)</h2>
+          <p>Form-design choices that lift completion — fewer fields, one column, inline validation — plus anti-spam that doesn't cost conversions (honeypot over CAPTCHA).</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/test-inbox-docker" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-22">Aug 22, 2026</time>
+            <span>·</span>
+            <span>7 min read</span>
+          </div>
+          <h2>Test email in Docker and CI with a disposable inbox</h2>
+          <p>Mailhog proves an email was sent, not delivered. Test real email from a Docker container or CI job with a disposable inbox over HTTP — create, wait, assert.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/assert-on-email-in-playwright-cypress" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-15">Aug 15, 2026</time>
+            <span>·</span>
+            <span>7 min read</span>
+          </div>
+          <h2>Assert on email in Playwright and Cypress</h2>
+          <p>Read and assert on a verification email inside Playwright or Cypress — a disposable inbox, a long-poll, and the extracted code or link, with no flaky sleeps.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/email-testing-api-for-ci" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-13">Aug 13, 2026</time>
+            <span>·</span>
+            <span>8 min read</span>
+          </div>
+          <h2>Email testing API: assert on real emails in CI</h2>
+          <p>An email testing API gives your tests a real inbox over HTTP, so CI can prove the welcome, receipt, or reset email arrived. What it is and how to wire it in.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/read-otp-verification-code-in-ai-agent" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-11">Aug 11, 2026</time>
+            <span>·</span>
+            <span>7 min read</span>
+          </div>
+          <h2>How to read an OTP / verification code in an AI agent</h2>
+          <p>An AI agent verifying an account must read the OTP from an email. The reliable way: give it an inbox, long-poll for the message, and read the extracted code.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/build-ai-agent-that-sends-and-receives-email" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-08">Aug 8, 2026</time>
+            <span>·</span>
+            <span>9 min read</span>
+          </div>
+          <h2>Build an AI agent that sends and receives email (with MCP)</h2>
+          <p>Give an AI agent a real inbox — send, receive, and reply via the Ollastack MCP server (Claude Desktop, Cursor) or the raw API, with code for both.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/email-for-ai-agents" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-08-04">Aug 4, 2026</time>
+            <span>·</span>
+            <span>10 min read</span>
+          </div>
+          <h2>Email for AI agents: give an agent its own inbox</h2>
+          <p>What email for AI agents means, how an agent inbox differs from a send-only API, and how to give an agent an address it can send from and receive into.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/blog/form-backend-for-ai-agents" class="post-card">
+          <div class="post-meta mono">
+            <time datetime="2026-05-16">May 16, 2026</time>
+            <span>·</span>
+            <span>10 min read</span>
+          </div>
+          <h2>Form backend for AI agents: why HTML form endpoints break for LLMs (and what to do)</h2>
+          <p>AI agents are increasingly submitting forms on behalf of users — and traditional form backends flag every one of them as spam. Here's why, and how to design an endpoint that treats agents as first-class clients.</p>
+          <span class="read-more mono">Read →</span>
+        </a>
+      </li>
+
+    </ul>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="foot-grid">
+        <div>
+          <a href="/" aria-label="ollastack" class="logo-lockup">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-mark">
+              <rect x="2" y="2" width="20" height="20" rx="4" fill="#DA291C"></rect>
+              <rect x="6" y="7" width="12" height="2" rx="1" fill="#ffffff"></rect>
+              <rect x="6" y="11" width="12" height="2" rx="1" fill="#ffffff"></rect>
+              <rect x="6" y="15" width="12" height="2" rx="1" fill="#ffffff"></rect>
+            </svg>
+            <span class="wordmark">ollastack</span>
+          </a>
+          <p class="tagline">The message layer for AI agents — forms in, email out, tested in CI. One API.</p>
+        </div>
+        <div>
+          <div class="foot-group-title mono">Product</div>
+          <ul class="foot-links">
+            <li><a href="/">Overview</a></li>
+            <li><a href="/email-api">Email API</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/docs#quickstart">Quickstart</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="foot-group-title mono">Resources</div>
+          <ul class="foot-links">
+            <li><a href="/resources">All guides</a></li>
+            <li><a href="/resources/migration-hub">Migration hub</a></li>
+            <li><a href="/resources/developer-hub">Developer hub</a></li>
+            <li><a href="/resources/deliverability-hub">Deliverability hub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="foot-group-title mono">Developers</div>
+          <ul class="foot-links">
+            <li><a href="/docs">Docs</a></li>
+            <li><a href="/docs/agents">For AI agents</a></li>
+            <li><a href="https://login.ollastack.com/api/openapi.json">OpenAPI spec</a></li>
+            <li><a href="/docs#webhooks">Webhooks</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="foot-group-title mono">Company</div>
+          <ul class="foot-links">
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/docs/smtp">Custom SMTP</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom mono">
+        <span>© 2026 Ollastack — an Ollasoftware Solutions company</span>
+        <span>Keerthi SB (keerthishankar68-sb)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
